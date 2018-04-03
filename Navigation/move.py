@@ -30,5 +30,5 @@ class servoMove:
 	        self.pwm.start(speed)
 
 	def __del__(self):
-		pwm.stop()
+		self.pwm.stop()
     	GPIO.cleanup(self.pin)
