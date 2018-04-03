@@ -2,11 +2,13 @@
 # yet to be tested
 
 class servoMove:
-	import RPi.GPIO as GPIO
 	def __init__(self, pin):
+		import RPi.GPIO as GPIO
 	    GPIO.setmode(GPIO.BCM)
 	    GPIO.setup(pin, GPIO.OUT)
 	    self.pwm = GPIO.PWM(pin, 50)
+	    self.speed = 0
+	    self.pin = pin
 
 	def translate(value, leftMin, leftMax, rightMin, rightMax):
 	    leftSpan = leftMax - leftMin
@@ -14,11 +16,12 @@ class servoMove:
 	    valueScaled = float(value - leftMin) / float(leftSpan)
 	    return rightMin + (valueScaled * rightSpan)
 
-	def change(value):
+	def change(self, value):
 	    return self.translate(value, -100, 100, 6.0, 8.5)
 
-	def move(inp):
+	def move(self, inp):
 		inp = float(inp)
+		self.speed = inp
 	    if (inp == 0):
 	        self.pwm.stop()
 	    else:
@@ -26,3 +29,6 @@ class servoMove:
 	        speed = self.change(inp)
 	        self.pwm.start(speed)
 
+	def __del__(self):
+		p.stop(self.pin)
+    	GPIO.cleanup(self.pin)
