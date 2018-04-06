@@ -10,7 +10,7 @@ class servoMove:
 		self.speed = 0
 		self.pin = pin
 
-	def translate(value, leftMin, leftMax, rightMin, rightMax):
+	def translate(self, value, leftMin, leftMax, rightMin, rightMax):
 		leftSpan = leftMax - leftMin
 		rightSpan = rightMax - rightMin
 		valueScaled = float(value - leftMin) / float(leftSpan)
