@@ -3,6 +3,7 @@
 
 class servoMove:
 	def __init__(self, pin):
+		import RPi.GPIO as GPIO
 		GPIO.setmode(GPIO.BCM)
 		GPIO.setup(pin, GPIO.OUT)
 		self.pwm = GPIO.PWM(pin, 50)
