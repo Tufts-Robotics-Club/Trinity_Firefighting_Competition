@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 import time
 
-LIGHT_PIN = 3
+LIGHT_PIN = 0
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(LIGHT_PIN, GPIO.OUT)
