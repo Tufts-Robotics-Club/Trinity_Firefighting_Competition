@@ -16,8 +16,8 @@ for PINS in ULTRASONICS_PINS:
 def getDistances():
 	distances = []
 
-	while isEcho():               #Check whether the ECHO is LOW
-		a = 1
+	# while isEcho():               #Check whether the ECHO is LOW
+	# 	a = 1
 	pulse_start = time.time() #Saves the last known time of LOW pulse
 
 	GPIO.output(TRIG, True)                  #Set TRIG as HIGH
