@@ -17,22 +17,27 @@ def getDistances():
 	distances = []
 
 	while isEcho():               #Check whether the ECHO is LOW
-		a = 1              #Saves the last known time of LOW pulse
+		pulse_start = time.time() #Saves the last known time of LOW pulse
 
 	GPIO.output(TRIG, True)                  #Set TRIG as HIGH
 	time.sleep(0.00001)                      #Delay of 0.00001 seconds
 	GPIO.output(TRIG, False)                 #Set TRIG as LOW
 	
-	pulse_start = time.time()
 	pulse_stop = [pulse_start] * len(ULTRASONICS_PINS)
+	seen_pulse = [False] * len(ULTRASONICS_PINS)
 
-
-	while isEcho() and time.time() < pulse_start+TIMEOUT:
+	while !all(seen_pulse) or (time.time() < pulse_start+TIMEOUT):
 		for index, pin_combo in enumerate(ULTRASONICS_PINS):
 			if GPIO.input(pin_combo[1]) == 1
 				pulse_stop[index] = time.time()
+				seen_pulse[index] = True
 
-	return pulse_stop
+    distances = []
+
+    for index, val in enumerate(pulse_stop):
+    	distances[index] = (pulse_stop[index] - pulse_start) * 17150
+
+	return distances
 
 def isEcho():
 	for pin in ULTRASONICS_PINS:
