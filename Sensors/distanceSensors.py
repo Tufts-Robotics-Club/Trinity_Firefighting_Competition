@@ -3,7 +3,7 @@ import time
 
 #ULTRASONICS_PINS = [[4, 20]]; #TRIGGER then ECHO
 ULTRASONICS_PINS = [[4, 20], [4, 16], [4, 21], [4, 5],
- 						[4, 6], [4, 13], [4, 19], [4, 19]]; #TRIGGER then ECHO
+						[4, 6], [4, 13], [4, 19], [4, 19]]; #TRIGGER then ECHO
 TIMEOUT = 6/343
 
 GPIO.setwarnings(False)
@@ -32,10 +32,10 @@ def getDistances():
 				pulse_stop[index] = time.time()
 				seen_pulse[index] = True
 
-    distances = []
+	distances = []
 
-    for index, val in enumerate(pulse_stop):
-    	distances[index] = (pulse_stop[index] - pulse_start) * 17150
+	for index, val in enumerate(pulse_stop):
+		distances[index] = (pulse_stop[index] - pulse_start) * 17150
 
 	return distances
 
