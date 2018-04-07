@@ -28,7 +28,7 @@ def getDistances():
 
 	while not (all(seen_pulse) and not isEcho()) or (time.time() < pulse_start+TIMEOUT):
 		for index, pin_combo in enumerate(ULTRASONICS_PINS):
-			if GPIO.input(pin_combo[1]) == 1
+			if GPIO.input(pin_combo[1]) == 1:
 				pulse_stop[index] = time.time()
 				seen_pulse[index] = True
 
