@@ -13,8 +13,8 @@ def change(value):
     return translate(value, -100, 100, 6.0, 8.5)
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(23, GPIO.OUT)
-p = GPIO.PWM(23, 50)
+GPIO.setup(24, GPIO.OUT)
+p = GPIO.PWM(24, 50)
 
 
 while True:
