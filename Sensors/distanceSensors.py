@@ -30,6 +30,7 @@ def getDistances():
 	while (time.time() < (pulse_start+TIMEOUT)):
 		for index, pin_combo in enumerate(ULTRASONICS_PINS):
 			if GPIO.input(pin_combo[1]) == 1:
+				print time.time()
 				pulse_stop[index] = time.time()
 				seen_pulse[index] = True
 
