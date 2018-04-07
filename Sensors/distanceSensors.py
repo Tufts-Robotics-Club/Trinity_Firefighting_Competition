@@ -5,7 +5,7 @@ import time
 ULTRASONICS_PINS = [[4, 20], [4, 16], [4, 21], [4, 5],
 						[4, 6], [4, 13], [4, 19], [4, 19]]; #TRIGGER then ECHO
 TIMEOUT = 6/343
-
+TRIG = 4
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 
