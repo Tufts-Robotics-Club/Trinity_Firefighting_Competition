@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO
 import extinguisher
 from time import sleep
 
-LIGHT_PIN = 8
+LIGHT_PIN = 11
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(LIGHT_PIN, GPIO.OUT)
 def extinguishFire():
