@@ -1,9 +1,11 @@
 import move
 
-motor1 = move.servoMove(23)
-motor2 = move.servoMove(24)
+motor1 = move.servoMove(14)
+motor2 = move.servoMove(15)
 
 def moveWheels(left, right):
 	motor1.move(left)
-	right = -right
-	motor2.move(right)
+	motor2.move(-right)
+
+def rotate(speed):
+	moveWheels(speed, speed)

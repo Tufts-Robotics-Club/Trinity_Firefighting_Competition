@@ -1,25 +1,19 @@
 import RPi.GPIO as GPIO
-
+lists = [[18,10],[25,30], [8,50], [7, 70], [1, 90]]
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(14, GPIO.IN)
-GPIO.setup(15, GPIO.IN)
-GPIO.setup(18, GPIO.IN)
-GPIO.setup(23, GPIO.IN)
-GPIO.setup(24, GPIO.IN)
+
+for pins in lists:
+	GPIO.setup(pins[0], GPIO.IN)
 
 def any_on():
-	return GPIO.input(14) or GPIO.input(15) or GPIO.input(18) or GPIO.input(23) or GPIO.input(24)
+	for pins in lists:
+		if GPIO.input(pins[0]):
+			return True
+	return False
 
 def angle():
 	angle = []
-	if GPIO.input(14):
-		angle.append(20)
-	if GPIO.input(15):
-		angle.append(40)
-	if GPIO.input(18):
-		angle.append(60)
-	if GPIO.input(23):
-		angle.append(80)
-	if GPIO.input(24):
-		angle.append(100)
+	for pins in lists:
+		if GPIO.input(pins[0]):
+			angle.append(pins[1])
 	return sum(angle)/len(angle)
