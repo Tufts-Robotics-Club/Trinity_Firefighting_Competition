@@ -10,3 +10,6 @@ def light_pin_up_for(pin, t):
 	GPIO.output(LIGHT_PIN, True)
 	time.sleep(t)
 	GPIO.output(LIGHT_PIN, False)
+
+if __name__ == '__main__':
+	light_pin_up_for(LIGHT_PIN, 1)
