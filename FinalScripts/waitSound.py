@@ -29,7 +29,7 @@ stream = p.open(format=FORMAT,
                 input=True,
                 frames_per_buffer=CHUNK)
 
-data = stream.read(CHUNK)
+data = stream.read(CHUNK, exception_on_overflow = False)
 while len(data) == CHUNK*SWIDTH:
 	# unpack the data and times by the hamming window
 	indata = np.array(wave.struct.unpack("%dh"%(len(data)/SWIDTH),\
@@ -55,7 +55,7 @@ while len(data) == CHUNK*SWIDTH:
 		print "Exiting"
 		break
 	# read some more data
-	data = stream.read(CHUNK)
+	data = stream.read(CHUNK, exception_on_overflow = False)
  
 stream.stop_stream()
 stream.close()
