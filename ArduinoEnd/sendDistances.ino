@@ -11,7 +11,8 @@ void setup() {
 void loop() {
   long duration, cm;
   int dis[NUM_SENSORS];
-    int in = Serial.read();
+  if (Serial.available() > 0){
+    int a = Serial.read();
     for (int i = 0; i < NUM_SENSORS; i++)
     {
       pinMode(pin[i][1], OUTPUT);
@@ -20,12 +21,12 @@ void loop() {
       digitalWrite(pin[i][1], HIGH);
       delayMicroseconds(5);
       digitalWrite(pin[i][1], LOW);
-      
+
       pinMode(pin[i][0], INPUT);
       duration = pulseIn(pin[i][0], HIGH, TIMEOUT);
 
       if(duration == 0) {
-          duration = TIMEOUT;
+        duration = TIMEOUT;
       }
 
       cm = microsecondsToCentimeters(duration);
@@ -33,9 +34,9 @@ void loop() {
 
     }
     Serial.println(String(dis[0])+" "+String(dis[1])+" "+String(dis[2])+" "+String(dis[3])+" "+String(dis[4])
-                   +" "+String(dis[5])+" "+String(dis[6])+" "+String(dis[7])); 
-}
+      +" "+String(dis[5])+" "+String(dis[6])+" "+String(dis[7])); 
+  }}
 
-long microsecondsToCentimeters(long microseconds) {
-  return microseconds / 29 / 2;
-}
+  long microsecondsToCentimeters(long microseconds) {
+    return microseconds / 29 / 2;
+  }
